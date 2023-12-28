@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>语文启蒙</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      background-image: url('./img/背景.png');
+      width: 1000px;
+      height: 1800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #write {
+      color: #FFF;
+      text-shadow: 1px 1px #372d33, 2px 2px #372d33, 3px 3px #372d33, 4px 4px #372d33,
+        5px 5px #372d33, 6px 6px #372d33;
+      /* background-color: aqua;
+      border-radius: 10px; */
+      width: 100px;
+      position: absolute;
+      top: 200px;
+      left: 48%;
+      transform: translateX(-48%);
+      font-family: 楷体;
+      font-size: 50px;
+      cursor: pointer;
+      animation: move 1s forwards;
+    }
+
+    @keyframes move {
+      from {
+        opacity: 0;
+        transform: translateY(300%);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .snow1 {
+      position: absolute;
+      width: 30px;
+      background-image: url("./img/雪花.png");
+      background-size: 100% 100%;
+    }
+
+    .snow2 {
+      position: absolute;
+      width: 20px;
+      background-image: url("./img/雪花2.png");
+      background-size: 100% 100%;
+    }
+
+    .snow3 {
+      position: absolute;
+      width: 10px;
+      background-image: url("./img/雪花3.png");
+      background-size: 100% 100%;
+    }
+
+    .snow4 {
+      position: absolute;
+      width: 15px;
+      z-index: 5;
+      background-image: url("./img/雪花.png");
+      background-size: 100% 100%;
+    }
+
+    #img {
+      width: 1000px;
+      height: 400px;
+      position: relative;
+      top: 380px;
+      overflow: hidden;
+    }
+
+    ul {
+      position: absolute;
+      left: 0;
+      width: 1000px;
+      height: 300px;
+    }
+
+    li {
+      width: 300px;
+      list-style: none;
+      float: left;
+      padding-right: 20px;
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+    }
+
+    #bu {
+      width: 400px;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bu {
+      height: 40px;
+      width: 80px;
+      margin: 0 50px;
+      font-size: 20px;
+    }
+
+    #texts {
+      background-color: bisque;
+      position: absolute;
+      top: 880px;
+      margin: auto 50%;
+      transform: translateX(-50%);
+
+    }
+
+    p {
+      width: 500px;
+      margin: 30px;
+      padding: 10px;
+      border-radius: 10px;
+      text-indent: 2em;
+      line-height: 28px;
+      font-family: cursive;
+      font-size: 25px;
+      color: cyan;
+      background-color: #FFF;
+      box-shadow: 0px 0px 10 #ccc;
+      z-index: 10;
+    }
+
+    #loading {
+      background-image: linear-gradient(0deg, white, black);
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      top: 1200px;
+    }
+
+    #loading>div {
+      background-image: linear-gradient(0deg, white, black);
+      width: 1000px;
+      height: 200px;
+      min-height: 100px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    #loading>div>div {
+      width: 1000px;
+      margin-top: 15px;
+      height: 200px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+
+    #loading>div>div>span {
+      color: white;
+      font-size: 28px;
+    }
+
+    @keyframes jump {
+      0% {
+        transform: translateY(0px);
+      }
+
+      20% {
+        transform: translateY(-24px);
+      }
+
+      40%,
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    #loading>div>div>span {
+      display: inline-block;
+      user-select: none;
+      color: black;
+      animation: jump 1.5s ease-in-out infinite;
+    }
+
+    #loading>div>div>span:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    #loading>div>div>span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    #loading>div>div>span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    #loading>div>div>span:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    #loading>div>div>span:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    #loading>div>div>span:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    #loading>div>div>span:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    #loading>div>div>span:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <!-- 雪花 -->
+    <div id="snow"></div>
+    <!-- 按钮 -->
+    <div id="write">点击</div>
+    <!-- 图片 -->
+    <div id="img">
+      <ul>
+        <li><img src="./img/熊大.png" alt=""></li>
+        <li><img src="./img/熊二.png" alt=""></li>
+        <li><img src="./img/嘟嘟.png" alt=""></li>
+        <li><img src="./img/光头强.png" alt=""></li>
+        <li><img src="./img/团子.png" alt=""></li>
+      </ul>
+      <div id="bu">
+        <button class="bu">向左转</button>
+        <button class="bu">向右转</button>
+      </div>
+    </div>
+    <!-- 字体出现  -->
+    <div id="texts">
+      <p id="p"></p>
+    </div>
+    <!--加载开始-->
+    <div id="loading">
+      <div>
+        <div>
+          <span>努</span>
+          <span>力</span>
+          <span>加</span>
+          <span>载</span>
+          <span>中</span>
+          <span>.</span>
+          <span>.</span>
+          <span>.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./字体出现.js"></script>
+<script src="./动态雪花.js"></script>
+<script src="./图片轮播.js"></script>
+<script src="./字体依次.js"></script>
+<script>
+  //获取元素
+  var container = document.getElementById('container')
+  var sw = 1000
+  var timer = null
+  var Cstart = document.getElementById('start')
+  var write = document.getElementById('write')
+
+  //开始
+  function start() {
+    //计时不断刷新
+    timer = setInterval(function () {
+      // 雪花的创建与移动
+      snowMove()
+    }, 40)
+  }
+  write.onclick = function () {
+    // 开始下雪
+    start()
+  }
+</script>
+
+</html>
